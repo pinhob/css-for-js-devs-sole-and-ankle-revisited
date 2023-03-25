@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { WEIGHTS } from '../../constants';
+import { QUERIES, WEIGHTS } from '../../constants';
 
 import Breadcrumbs from '../Breadcrumbs';
 import Select from '../Select';
@@ -14,6 +14,15 @@ const ShoeIndex = ({ sortId, setSortId }) => {
     <Wrapper>
       <MainColumn>
         <Header>
+          <MobileBreadcrumbsWrapper>
+            <Breadcrumbs>
+              <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+              <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+              <Breadcrumbs.Crumb href="/sale/shoes">
+                Shoes
+              </Breadcrumbs.Crumb>
+            </Breadcrumbs>
+          </MobileBreadcrumbsWrapper>
           <Title>Running</Title>
           <Select
             label="Sort"
@@ -27,7 +36,7 @@ const ShoeIndex = ({ sortId, setSortId }) => {
         <Spacer size={32} />
         <ShoeGrid />
       </MainColumn>
-      <LeftColumn>
+      <DesktopColumn>
         <Breadcrumbs>
           <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
           <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
@@ -37,7 +46,7 @@ const ShoeIndex = ({ sortId, setSortId }) => {
         </Breadcrumbs>
         <Spacer size={42} />
         <ShoeSidebar />
-      </LeftColumn>
+      </DesktopColumn>
     </Wrapper>
   );
 };
@@ -49,19 +58,37 @@ const Wrapper = styled.div`
   gap: 32px;
 `;
 
-const LeftColumn = styled.div`
-  flex-basis: 248px;
-`;
-
 const MainColumn = styled.div`
   flex: 1;
+`;
+
+const DesktopColumn = styled.div`
+  flex-basis: 248px;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: none;
+  }
 `;
 
 const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
 `;
+
+const MobileBreadcrumbsWrapper = styled.div`
+  display: none;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: block;
+    width: 100%;
+  }
+`
 
 const Title = styled.h2`
   font-size: 1.5rem;
