@@ -9,19 +9,25 @@ import Spacer from '../Spacer';
 import ShoeSidebar from '../ShoeSidebar';
 import ShoeGrid from '../ShoeGrid';
 
+const ShoeBreadcrums = () => {
+  return (
+    <Breadcrumbs>
+      <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+      <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+      <Breadcrumbs.Crumb href="/sale/shoes">
+        Shoes
+      </Breadcrumbs.Crumb>
+    </Breadcrumbs>
+  )
+}
+
 const ShoeIndex = ({ sortId, setSortId }) => {
   return (
     <Wrapper>
       <MainColumn>
         <Header>
           <MobileBreadcrumbsWrapper>
-            <Breadcrumbs>
-              <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
-              <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
-              <Breadcrumbs.Crumb href="/sale/shoes">
-                Shoes
-              </Breadcrumbs.Crumb>
-            </Breadcrumbs>
+            <ShoeBreadcrums />
           </MobileBreadcrumbsWrapper>
           <Title>Running</Title>
           <Select
@@ -37,13 +43,7 @@ const ShoeIndex = ({ sortId, setSortId }) => {
         <ShoeGrid />
       </MainColumn>
       <DesktopColumn>
-        <Breadcrumbs>
-          <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
-          <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
-          <Breadcrumbs.Crumb href="/sale/shoes">
-            Shoes
-          </Breadcrumbs.Crumb>
-        </Breadcrumbs>
+        <ShoeBreadcrums />
         <Spacer size={42} />
         <ShoeSidebar />
       </DesktopColumn>
